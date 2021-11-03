@@ -9,7 +9,7 @@ add_custom_target(myTests)
 
 set(MY_TEST_NAMES "")
 list(APPEND MY_TEST_NAMES "Test_abssum_of_elements")
-list(APPEND MY_TEST_NAMES "Test_check_are_equal")
+list(APPEND MY_TEST_NAMES "Test_first_n_equal")
 list(APPEND MY_TEST_NAMES "Test_count_fulfills_cond")
 list(APPEND MY_TEST_NAMES "Test_multiply_with_value")
 list(APPEND MY_TEST_NAMES "Test_populate_with_sequence")

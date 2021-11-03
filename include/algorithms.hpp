@@ -7,15 +7,16 @@
 #include <iostream>
 #include <string>
 
-// print container elements
-template <typename C> auto print(std::ostream &os, const C &ctnr) {
-  os << "[";
-  std::size_t i = 0;
-  std::size_t end = ctnr.size()-1;
-  for (; i < end; ++i) {
-    os << ctnr[i] << ", ";
+// populate container with constant value
+template <typename C>
+auto populate_with_value(C &ctnr, typename C::value_type value) {
+  /* classic index-based for loop */
+  for (std::size_t i = 0; i < ctnr.size(); ++i) {
+    ctnr[i] = value;
   }
-  os << ctnr[i] << "]" << std::endl;
+
+  /* same functionality using std algorithm */
+  // std::fill(ctnr.begin(), ctnr.end(), value);
 };
 
 // populate container with increasing sequence of values
@@ -44,8 +45,7 @@ template <typename C> auto reverse_order(C &ctnr) {
 
 // check how many elements fulfill a condition
 template <typename C, typename UnaryPredicate>
-auto count_fulfills_cond(
-    C &ctnr, UnaryPredicate condition) {
+auto count_fulfills_cond(C &ctnr, UnaryPredicate condition) {
   std::size_t count = 0;
   for (std::size_t i = 0; i < ctnr.size(); ++i) {
     if (condition(ctnr[i])) {
@@ -56,12 +56,15 @@ auto count_fulfills_cond(
 };
 
 // check if two containers are equal in length and content
-template <typename C> auto check_are_equal(const C &a, const C &b) {
-  if (a.size() != b.size()) {
+template <typename C>
+auto first_n_equal(const C &a, const C &b, std::size_t n) {
+  if (a.size() < n || b.size() < n) {
     return false;
   }
-  for (std::size_t i = 0; i < a.size(); ++i) {
-    if (a != b) {
+
+  for (std::size_t i = 0; i < n; ++i) {
+    // if j is out of bounds or elements do not match, the ranges are not equal 
+    if (a[i] != b[i]) {
       return false;
     }
   }
@@ -84,4 +87,14 @@ template <typename C> auto abssum_of_elements(C &ctnr) {
     sum += std::abs(ctnr[i]);
   }
   return sum;
+};
+
+// print container elements
+template <typename C> auto print(std::ostream &os, const C &ctnr) {
+  os << "[";
+  std::size_t lastElement = ctnr.size() - 1;
+  for (std::size_t i = 0; i < lastElement; ++i) {
+    os << ctnr[i] << ", ";
+  }
+  os << ctnr[lastElement] << "]" << std::endl;
 };

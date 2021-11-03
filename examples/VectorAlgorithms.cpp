@@ -48,7 +48,7 @@ int main() {
     std::cout << "\nvec_copy: " << std::endl;
     print(std::cout, vec_copy);
 
-    auto equal = check_are_equal(vec, vec_copy);
+    auto equal = first_n_equal(vec, vec_copy, 5);
     std::cout << "\ncheck_are_equal: " << equal
               << ", expected: " << false << std::endl;
   }

@@ -14,11 +14,15 @@ int main() {
   { // obtaining iterators using <iterator> header
     [[maybe_unused]] auto iter_begin = std::begin(vec); // [[maybe_unused]] avoids compiler warning 
     [[maybe_unused]] auto iter_end = std::end(vec);
+    [[maybe_unused]] auto const_iter_begin = std::cbegin(vec); // [[maybe_unused]] avoids compiler warning 
+    [[maybe_unused]] auto const_iter_end = std::cend(vec);
   }
 
   { // obtaining iterators from member function
     [[maybe_unused]] auto iter_begin = vec.begin();
     [[maybe_unused]] auto iter_end = vec.end();
+    [[maybe_unused]] auto const_iter_begin = vec.cbegin();
+    [[maybe_unused]] auto const_iter_end = vec.cend();
   }
 
   { // the end element is "one past the last element"
