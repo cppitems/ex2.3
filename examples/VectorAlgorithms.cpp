@@ -49,7 +49,11 @@ int main() {
     print(std::cout, vec_copy);
 
     auto equal = first_n_equal(vec, vec_copy, 5);
-    std::cout << "\ncheck_are_equal: " << equal
+    std::cout << "\nfirst 5 equal: " << equal
+              << ", expected: " << true << std::endl;
+    
+    equal = first_n_equal(vec, vec_copy, 7);
+    std::cout << "\nfirst 7 equal: " << equal
               << ", expected: " << false << std::endl;
   }
   

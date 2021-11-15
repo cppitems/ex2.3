@@ -1,7 +1,6 @@
-1 // item status
 # Exercise EX2.1
 
-This exercise is part **1** of 3 parts of EX2. See also [Item 000](https://cppitems.github.io/#/item/000) for an overview and deadlines. The submission deadline for EX2 (all three parts) is **Mo 29.11.2021, 4pm**. The sources related to EX2.1 are available at [Item 011](https://github.com/cppitems/cppitems/tree/master/items/011). You should submit this exercise in a git repository called `ex2.1` on our Gitea server.
+This exercise is part **1** of 3 parts of Ex2. See also [Item 000](https://cppitems.github.io/#/item/000) for an overview and deadlines. The submission deadline for EX2 (all three parts) is **Mo 29.11.2021, 4pm**. The sources related to Ex2.3 are available at [Item 011](https://github.com/cppitems/cppitems/tree/master/items/011). You should submit this exercise in a git repository called `ex2.1` at [https://tea.iue.tuwien.ac.at/](https://tea.iue.tuwien.ac.at/).
 
 ## Task description
 
@@ -33,7 +32,7 @@ auto populate_with_value(C &ctnr, typename C::value_type value) {
 
 Similarly, you should change all other functions to use iterators and the functions provided in `<algorithm>` to achieve compatibility with the containers used in the tests.
 For an overview and documentation of all algorithms available in the algorithms library of the C++ standard library, see [https://en.cppreference.com/w/cpp/algorithm]([https://en.cppreference.com/w/cpp/algorithm).
-This header contains many different functions and **you may use any of them**, however you should be able to solve the exercise using the following functions (in no particular order):
+This header contains many different functions and **you may use any of them**, however the following functions should be enough to solve the exercise (in no particular order):
 - [std::fill](https://en.cppreference.com/w/cpp/algorithm/fill)
 - [std::transform](https://en.cppreference.com/w/cpp/algorithm/transform)
 - [std::generate](https://en.cppreference.com/w/cpp/algorithm/generate)
@@ -45,7 +44,7 @@ This header contains many different functions and **you may use any of them**, h
 
 
 
-**NOTE: after you finished your modifications in `include/algorithms.hpp`, no explicit `for`-loops should be present.**
+**NOTE: After you finished your modifications in `include/algorithms.hpp`, no explicit `for`-loops should be present.**
 
 Prepare yourself for a discussion of your implementation and try to identify advantages and disadvantages of using "algorithms form the stdlib" vs. "classic `for`-loops".
 
@@ -62,3 +61,7 @@ The tests should help you extend these functionalities to other standard data st
 - Test_print.cpp
 - Test_reverse_order.cpp
 - Test_sum_of_elements.cpp
+
+## Iterators
+
+The STL algorithms in `<algorithms>` rely heavily on iterators, so you are provided some example on how to obtain iterators for STL data structures in `examples/VectorIterators.cpp`.

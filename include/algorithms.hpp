@@ -10,14 +10,15 @@
 // populate container with constant value
 template <typename C>
 auto populate_with_value(C &ctnr, typename C::value_type value) {
-  /* classic index-based for loop */
   for (std::size_t i = 0; i < ctnr.size(); ++i) {
     ctnr[i] = value;
   }
-
-  /* same functionality using std algorithm */
-  // std::fill(ctnr.begin(), ctnr.end(), value);
 };
+// same functionality using STL algorithm which works for all data structures
+// template <typename C>
+// auto populate_with_value(C &ctnr, typename C::value_type value) {
+//   std::fill(ctnr.begin(), ctnr.end(), value);
+// };
 
 // populate container with increasing sequence of values
 template <typename C>
@@ -58,12 +59,14 @@ auto count_fulfills_cond(C &ctnr, UnaryPredicate condition) {
 // check if two containers are equal in length and content
 template <typename C>
 auto first_n_equal(const C &a, const C &b, std::size_t n) {
+  // if containers are not at least n long,
+  // the first n elements cannot be equal
   if (a.size() < n || b.size() < n) {
     return false;
   }
 
   for (std::size_t i = 0; i < n; ++i) {
-    // if j is out of bounds or elements do not match, the ranges are not equal 
+    // if elements do not match, the ranges are not equal
     if (a[i] != b[i]) {
       return false;
     }

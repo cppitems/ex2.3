@@ -4,17 +4,18 @@
 #include <vector>
 
 int main() {
-
+  // try changing this container type and see if everything still works
   using Container = std::vector<double>;
-  Container vec(10);
-  Container::value_type value;
+  Container vec(10, 10);
+  Container::value_type value = 5;
 
   // ---------------------------------- Iterator Basics
 
   { // obtaining iterators using <iterator> header
-    [[maybe_unused]] auto iter_begin = std::begin(vec); // [[maybe_unused]] avoids compiler warning 
+    [[maybe_unused]] auto iter_begin =
+        std::begin(vec); // [[maybe_unused]] avoids compiler warning
     [[maybe_unused]] auto iter_end = std::end(vec);
-    [[maybe_unused]] auto const_iter_begin = std::cbegin(vec); // [[maybe_unused]] avoids compiler warning 
+    [[maybe_unused]] auto const_iter_begin = std::cbegin(vec);
     [[maybe_unused]] auto const_iter_end = std::cend(vec);
   }
 
@@ -30,43 +31,49 @@ int main() {
     // value = *iter_end; // access out-of-bounds (LEADS TO SEGFAULT IF USED)
     --iter_end; // move iterator back once to point to last element
     if (iter_end != vec.end()) { // check if we are out of bounds
-      value = *iter_end; // guarded access
+      value = *iter_end;         // guarded access
     }
   }
 
-  // ----------------------------------  Iterator Usage
+  // ----------------------------------  Iterator Usage to fill data structure
 
-  // "classic for-loop with index"
+  // classic for-loop with index
   for (std::size_t i = 0; i < vec.size(); ++i) {
-    value = vec[i]; // access value using operator[index]
+    vec[i] = value; // access value using operator[]
   }
 
   // classic for-loop with iterators
+  // std::end(vec) must point to past the end, so the last element is still
+  // included in the for loop
   for (auto iter = std::begin(vec); iter != std::end(vec); ++iter) {
-    value = *iter; // access value using dereferenced iterator
+    *iter = value; // access value using dereferenced iterator
   }
 
-  { // range based for-loop (requires and uses iterators under the hood)
-    for (auto &item : vec) { // take reference `auto &` to each element
-      item = value; // direct access to value
-    }
-    { // this is how it looks "under the hood"
-      auto begin = vec.begin();
-      auto end = vec.end();
-      for (; begin != end; ++begin) {
-        double &item = *begin;
-        item = value;
-      }
+  // range based for loop (requires and uses iterators under the hood)
+  for (auto &item : vec) { // take reference `auto &` to each element
+    item = value; // direct access to value through `auto &item`
+  }
+  { // this is how it looks "under the hood"
+    auto begin = vec.begin();
+    auto end = vec.end();
+    for (; begin != end; ++begin) {
+      auto &item = *begin; // `auto &` as in the range-based for loop
+      item = value;
     }
   }
+
+  // using an STL algorithm to do the filling for us
+  std::fill(vec.begin(), vec.end(), value);
 
   // ---------------------------------- Iterator usage with standard library
 
   // usage example for an algorithm in the <algorithm> header
-  { // apply a transformation (sin) to vector and store to new vector
-    Container newvec(10);
-    std::transform(
-        vec.begin(), vec.end(), newvec.begin(),
-        [](const Container::value_type &element) { return std::sin(element); });
-  }
+  // apply a transform (sin) to vector and store in a new vector
+  Container newvec(10);
+  std::transform(
+      // take elements from the vec.begin() to vec.end()
+      // and write starting at newvec.begin()
+      vec.begin(), vec.end(), newvec.begin(),
+      [](const Container::value_type &element) { return std::sin(element); });
+
 }
