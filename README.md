@@ -1,6 +1,6 @@
-# Exercise EX2.1
+# Exercise EX2.3
 
-This exercise is part **1** of 3 parts of Ex2. See also [Item 000](https://cppitems.github.io/#/item/000) for an overview and deadlines. The submission deadline for EX2 (all three parts) is **Mo 29.11.2021, 4pm**. The sources related to Ex2.3 are available at [Item 011](https://github.com/cppitems/cppitems/tree/master/items/011). You should submit this exercise in a git repository called `ex2.1` at [https://tea.iue.tuwien.ac.at/](https://tea.iue.tuwien.ac.at/).
+This exercise is part **3** of 3 parts of Ex2. See also [Item 000](https://cppitems.github.io/#/item/000) for an overview and deadlines. The submission deadline for EX2 (all three parts) is **Mo 29.11.2021, 4pm**. The sources related to Ex2.3 are available at [Item 011](https://github.com/cppitems/cppitems/tree/master/items/011). You should submit this exercise in a git repository called `ex2.3` at [https://tea.iue.tuwien.ac.at/](https://tea.iue.tuwien.ac.at/).
 
 ## Task description
 
