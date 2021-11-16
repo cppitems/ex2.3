@@ -4,7 +4,7 @@ This exercise is part **1** of 3 parts of Ex2. See also [Item 000](https://cppit
 
 ## Task description
 
-In this exercise it is your task to adopt the implementation of the functions in `include/algorithms.hpp`, which are part of a *header-only* library.
+In this exercise it is your task to adapt the implementation of the functions in `include/algorithms.hpp`, which are part of a *header-only* library.
 
 These functions are function templates with a single *type template parameter* `C` and implement algorithms tailored to a "container type" `C` which supports access to elements using the `operator[]` and has a `size()` member, e.g. `std::vector`.
 
