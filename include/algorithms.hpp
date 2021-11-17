@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <numeric>
 
 // populate container with constant value
 template <typename C>
